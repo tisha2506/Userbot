@@ -95,6 +95,16 @@ async def spammer(e):
                 "DelaySpam was executed successfully"
                 )
 
+
+@register(outgoing=True, pattern="^.repeater")
+async def repeats(e):
+    message = e.text[10:]
+    count = int(e.text[8:10])
+    repmessage = message * count
+    await wait([e.respond(repmessage)for i in range(count)])
+    await e.delete()
+
+
 CMD_HELP.update({
     "spam": ".tspam <text>\
 \nUsage: Spam the text letter by letter.\
@@ -102,6 +112,8 @@ CMD_HELP.update({
 \nUsage: Your regular spammer stuff :P\
 \n\n.bigspam <count> <text>\
 \nUsage: .spam on steroids !!\
+\n\n.repeater <count> <text>\
+\nUsage: Repeat Words/Sentence/Emoji in a single msg. :P\
 \n\n.picspam <count> <link>\
 \nUsage: As if text spam was not enough !!\
 \n\n.delayspam <delay> <count> <text>\
