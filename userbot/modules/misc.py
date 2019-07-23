@@ -66,12 +66,6 @@ async def revivedabot(restart):
         # You probably don't need it but whatever
         quit()
 
-@register(outgoing=True, pattern="^.community$")
-async def bot_community(community):
-    """ For .support command, just returns the group link. """
-    if not community.text[0].isalpha() and community.text[0] not in ("/", "#", "@", "!"):
-        await community.edit("Join the awesome Paperplane userbot community: @userbot_support\nBe warned that this is a fork of their project and you may get limited support for bugs.")
-
 @register(outgoing=True, pattern="^.support$")
 async def bot_support(wannahelp):
     """ For .support command, just returns the group link. """
@@ -81,12 +75,12 @@ async def bot_support(wannahelp):
 @register(outgoing=True, pattern="^.creator$")
 async def creator(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("[AvinashReddy3108](https://t.me/AvinashReddy3108)")
+        await e.edit("My Creator iz [noobvishal](https://t.me/noobvishal)")
 
 @register(outgoing=True, pattern="^.readme$")
 async def reedme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("You might want to have a look at the [README.md](https://github.com/AvinashReddy3108/PaperplaneExtended/blob/master/README.md) file.")
+        await e.edit("You might want to have a look at the [README.md](https://github.com/noobvishal/Userbot/blob/sql-extended/README.md) file.")
 
 #
 # Copyright (c) Gegham Zakaryan | 2019
@@ -108,7 +102,7 @@ async def repeat(rep):
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
     if not wannasee.text[0].isalpha() and wannasee.text[0] not in ("/", "#", "@", "!"):
-        await wannasee.edit("Click [here](https://github.com/AvinashReddy3108/PaperplaneExtended) to open Paperplane Extended's GitHub page.")
+        await wannasee.edit("Click [here](https://github.com/noobvishal/Userbot) to open Paperplane Extended's GitHub page.")
 
 CMD_HELP.update({
     'random': '.random <item1> <item2> ... <itemN>\
@@ -126,10 +120,6 @@ hear Windows XP shutdown sound... but you don't."
 CMD_HELP.update({
     'support': ".support\
 \nUsage: If you need help, use this command."
-})
-CMD_HELP.update({
-    'community': ".community\
-\nUsage: Join the awesome Paperplane userbot community !!"
 })
 CMD_HELP.update({
     'repo': '.repo\

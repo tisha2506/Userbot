@@ -1,7 +1,7 @@
 {
-  "name": "Paperplane Extended - Telegram Userbot",
-  "description": "A modular Telegram userbot running on Python 3.6+ with an sqlalchemy database.",
-  "logo": "https://i.imgur.com/ATSG4w3.png",
+  "name": "Telegram Userbot",
+  "description": "A Modular Telegram Userbot.",
+  "logo": "https://i.imgur.com/ZLi4nDP.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/AvinashReddy3108/PaperplaneExtended",
+  "repository": "https://github.com/noobvishal/Userbot",
   "website": "https://github.com/RaphielGang/Telegram-UserBot/wiki",
   "success_url": "https://t.me/userbot_announcements",
   "stack": "container",

@@ -4,7 +4,7 @@
 
 #### The easiest way to deploy this bad boy !!
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AvinashReddy3108/PaperplaneExtended/tree/sql-extended)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
     #include <std/disclaimer.h>
     /**
@@ -32,7 +32,7 @@ For setting up and configuring this userbot, you can checkout the [Wiki](https:/
 If you just want to stay in the loop about new features or
 announcements you can join the [news channel](https://t.me/PaperplaneExtended).
 
-If you find any bugs or have any suggestions then don’t hesitate to contact me in my [support group](https://t.me/joinchat/FL1HhlObW_Q5oUrZdbDcKg).
+If you find any bugs or have any suggestions then don’t hesitate to [contact me](https://t.me/noobvishal).
 
 ### Credits:
 

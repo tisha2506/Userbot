@@ -135,43 +135,9 @@ async def amireallyalive(alive):
     if not alive.text[0].isalpha() and alive.text[0] not in ("/", "#", "@", "!"):
         await alive.edit(
             "`"
-            "My bot is running \n\n"
-            f"Telethon version: {version.__version__} \n"
-            f"Python: {python_version()} \n"
-            f"User: {DEFAULTUSER}"
+            "Guruji hum abhi zinda hai ;) \n\n"
             "`"
             )
-
-
-@register(outgoing=True, pattern="^.aliveu")
-async def amireallyaliveuser(username):
-    """ For .aliveu command, change the username in the .alive command. """
-    if not username.text[0].isalpha() and username.text[0] not in ("/", "#", "@", "!"):
-        message = username.text
-        output = '.aliveu [new user without brackets] nor can it be empty'
-        if not (message == '.aliveu' or message[7:8] != ' '):
-            newuser = message[8:]
-            global DEFAULTUSER
-            DEFAULTUSER = newuser
-            output = 'Successfully changed user to ' + newuser + '!'
-        await username.edit(
-            "`"
-            f"{output}"
-            "`"
-        )
-
-
-@register(outgoing=True, pattern="^.resetalive$")
-async def amireallyalivereset(ureset):
-    """ For .resetalive command, reset the username in the .alive command. """
-    if not ureset.text[0].isalpha() and ureset.text[0] not in ("/", "#", "@", "!"):
-        global DEFAULTUSER
-        DEFAULTUSER = uname().node
-        await ureset.edit(
-            "`"
-            "Successfully reset user for alive!"
-            "`"
-        )
 
 CMD_HELP.update({
     "sysd": ".sysd\
@@ -187,6 +153,5 @@ CMD_HELP.update({
 })
 CMD_HELP.update({
     "alive": ".alive\
-    \nUsage: It's used to check if your bot is working or not. \
-Use .aliveu <new_user> to change user or .resetalive to reset .alive."
+    \nUsage: It's used to check if your bot is working or not."
 })

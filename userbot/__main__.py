@@ -29,9 +29,8 @@ except PhoneNumberInvalidError:
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 
-LOGS.info("Your Bot is now running! Test it by typing .alive in any chat."
-          "If you need assistance, head to https://t.me/userbot_support")
-LOGS.info("Your Bot Version is 3.0-sql-extended")
+LOGS.info("Your Bot is now running! Test it by typing .alive in any chat.")
+LOGS.info("Your Bot Version is 3.0")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()

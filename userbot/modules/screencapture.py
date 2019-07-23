@@ -15,9 +15,9 @@ from userbot import SCREENSHOT_LAYER_ACCESS_KEY, CMD_HELP
 from userbot.events import register
 
 
-@register(pattern=r".screencapture (.*)", outgoing=True)
+@register(pattern=r".sc (.*)", outgoing=True)
 async def capture(url):
-    """ For .screencapture command, capture a website and send the photo. """
+    """ For .sc command, capture a website and send the photo. """
     if not url.text[0].isalpha() and url.text[0] not in ("/", "#", "@", "!"):
         if SCREENSHOT_LAYER_ACCESS_KEY is None:
             await url.edit(
@@ -56,6 +56,6 @@ async def capture(url):
             await url.edit(response_api.text)
 
 CMD_HELP.update({
-    "screencapture": ".screencapture <url>\
+    "screencapture": ".sc <url>\
     \nUsage: Takes a screenshot of a website and sends the screenshot."
 })
