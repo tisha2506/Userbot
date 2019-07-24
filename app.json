@@ -85,6 +85,19 @@
     "WELCOME_MUTE": {
       "description": "Mute some known spammer bots after they join.",
       "value": "False"
+    },
+    "TEMP_DOWNLOAD_DIRECTORY": {
+      "description": "Download Location For Gdrive Module",
+      "value": "./DOWNLOADS/"
+      "required": false
+    },
+    "G_DRIVE_CLIENT_ID": {
+      "description": "Enter Your Client ID",
+      "required": false
+    },
+    "G_DRIVE_CLIENT_SECRET": {
+      "description": "Enter Your Client Secret",
+      "required": false
     }
   },
   "addons": [
