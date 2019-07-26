@@ -101,7 +101,7 @@
     "GDRIVE_FOLDER_ID": {
       "description": "Enter Your GDrive Folder ID",
       "required": false
-    }
+    },
     "G_DRIVE_AUTH_TOKEN_DATA": {
       "description": "Enter Your Gdrive Auth Token {Will Get On A Later Step}",
       "required": false
