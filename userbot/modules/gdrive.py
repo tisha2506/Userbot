@@ -2,7 +2,7 @@
 Syntax:
 .gdrive"""
 
-# Special thanks to @spechide & @Zero_cool7870 & @Prakaska :)
+#Special thanks to @spechide & @Zero_cool7870 :)
 # The entire code given below is verbatim copied from
 # https://github.com/cyberboysumanjay/Gdrivedownloader/blob/master/gdrive_upload.py
 # there might be some changes made to suit the needs for this repository
@@ -20,7 +20,7 @@ from apiclient.errors import ResumableUploadError
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
 from oauth2client import file, client, tools
-from userbot import (G_DRIVE_CLIENT_ID, G_DRIVE_CLIENT_SECRET, G_DRIVE_AUTH_TOKEN_DATA, BOTLOG_CHATID)
+from userbot import (G_DRIVE_CLIENT_ID, GDRIVE_FOLDER_ID, G_DRIVE_CLIENT_SECRET, G_DRIVE_AUTH_TOKEN_DATA, BOTLOG_CHATID)
 from userbot.events import register
 from mimetypes import guess_type
 import httplib2
@@ -37,7 +37,7 @@ OAUTH_SCOPE = "https://www.googleapis.com/auth/drive.file"
 # Redirect URI for installed apps, can be left as is
 REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
 # global variable to set Folder ID to upload to
-G_DRIVE_F_PARENT_ID = None
+parent_id = GDRIVE_FOLDER_ID
 
 async def progress(current, total, event, start, type_of_ps, file_name = None):
     """Generic progress_callback for both
@@ -145,6 +145,7 @@ async def download(dryb):
         elif input_str:
             input_str = input_str.strip()
             if os.path.exists(input_str):
+                start = datetime.now()
                 end = datetime.now()
                 duration = (end - start).seconds
                 required_file_name = input_str
@@ -169,7 +170,7 @@ async def download(dryb):
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
             g_drive_link = upload_file(http, required_file_name, file_name, mime_type)
-            await dryb.edit(f"Google Drive Link = {g_drive_link}")
+            await dryb.edit(f"**Google Drive :** [Link]({g_drive_link})")
         except Exception as e:
             await dryb.edit(f"Exception occurred while uploading to gDrive {e}")
 
@@ -183,8 +184,8 @@ async def download(set):
         await set.reply("Processing ...")
         input_str = set.pattern_match.group(1)
         if input_str:
-            G_DRIVE_F_PARENT_ID = input_str
-            await set.edit("Custom Folder ID set successfully. The next uploads will upload to {G_DRIVE_F_PARENT_ID} till `.gdriveclear`")
+            parent_id = input_str
+            await set.edit("Custom Folder ID set successfully. The next uploads will upload to {parent_id} till `.gdriveclear`")
             await set.delete()
         else:
             await set.edit("Send `.gdrivesp https://drive.google.com/drive/u/X/folders/Y` to set the folder to upload new files to")
@@ -197,7 +198,7 @@ async def download(gclr):
         if gclr.fwd_from:
             return
         await gclr.reply("Processing ...")
-        G_DRIVE_F_PARENT_ID = None
+        parent_id = GDRIVE_FOLDER_ID
         await gclr.edit("Custom Folder ID cleared successfully.")
         await gclr.delete()
 
@@ -255,8 +256,8 @@ def upload_file(http, file_path, file_name, mime_type):
         "description": "backup",
         "mimeType": mime_type,
     }
-    if G_DRIVE_F_PARENT_ID is not None:
-        body["parents"] = [{"id": G_DRIVE_F_PARENT_ID}]
+    if parent_id:
+        body[ 'parents' ] = [{'id': parent_id}]
     # Permissions body description: anyone who has link can upload
     # Other permissions can be found at https://developers.google.com/drive/v2/reference/permissions
     permissions = {
@@ -273,3 +274,11 @@ def upload_file(http, file_path, file_name, mime_type):
     file = drive_service.files().get(fileId=file["id"]).execute()
     download_url = file.get("webContentLink")
     return download_url
+
+
+@register(pattern=r".gfolder(?: |$)(.*)", outgoing=True)
+async def _(event):
+    if event.fwd_from:
+        return
+    folder_link = "https://drive.google.com/drive/u/2/folders/"+parent_id
+    await event.edit(f"**Your Gdrive Folder :** [Link]({folder_link})")
